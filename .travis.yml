@@ -11,12 +11,10 @@ env:
   global:
   - NPM_REGISTRY=https://atomist.jfrog.io/atomist/api/npm/npm-dev-local
   - secure: fndDdbAB3jkv62WYADMyM6YnkEF3HvYmOHSPBWRtnPp+zvV1Uk4NTv1CH9f10NDBvmdigrfjWnqBGgl+G9naJIifZqXkr3DkrserqdXTG2mhtU8drM/RSHAZudjjbZn6F5CZOcxBwOPp9AORmyAha3jwzf/JCtLRNPSxKDgmblnhC+gBLzuYdfgBugUja2qaaruCcFs0bI9bXwsT4bE9Otl0a8Vh8IzrgAYQ4vzqW87Z+FarL5gL/vNbFyghIBIgoWVLReQXLxqBMO2irBs50Y7Jg5vUQsiZwJSC8IlVpOHHYwzeL2Ms99ZilU9jHbBKydV5yp1BauhAUFD/G6/XgkxHGIk8ENUXMpSFabquBATMHfkXNPmFYD61yUcuZguACtOdKOkV3CbPTjRPqv8iUPAtTup5lmrKAxVuHkkRE5bBU+gjPIBSi4q9ANBgbB6b2CIJh4QoV656+YdRb7AuI58rsLXEVXC3hKGsuRjR2CBQr2/oEo8id+kPvMiodvNa2Kmjc+uKMbpGjuJoUvMxDDT+Olxqj+lmEb24782GT/PtvCsoEvuhm1eqE5zGhQJ4cS69jMNUip1ifWE+g7fKsxGzu1/fwCzdDZY77poxZKQyf6bM9y6gBclqKaCGwBnv3wwjTBw/6woi+JLpQpWx4kivjtAlcKmuukTDaqLgCHU=
-before_install:
-- openssl aes-256-cbc -K $encrypted_5a461dbd19e8_key -iv $encrypted_5a461dbd19e8_iv
-  -in .npmrc.enc -out .npmrc -d
 install:
-- "set -x ; npm install --verbose https://atomist.jfrog.io/atomist/npm-dev/axios/-/axios-0.17.1-proxy-fix.tgz ; cat $HOME/.npm/_logs/*-debug.log ; ls -al . node_modules node_modules/axios ; cat node_modules/axios/package.json ; npm ls"
-- "set -x ; npm install --verbose ; cat $HOME/.npm/_logs/*-debug.log ; ls -al . node_modules node_modules/axios ; cat node_modules/axios/package.json ; npm ls"
+- "set -x ; npm install --verbose https://atomist.jfrog.io/atomist/npm-dev/axios/-/axios-0.17.1-proxy-fix.tgz ; cat $HOME/.npm/_logs/*-debug.log ; ls -al . node_modules node_modules/axios ; cat node_modules/axios/package.json"
+- "set -x ; npm install --verbose ; cat $HOME/.npm/_logs/*-debug.log ; ls -al . node_modules node_modules/axios ; cat node_modules/axios/package.json"
+- "npm ls || :"
 script: bash scripts/travis-build.bash
 notifications:
   email: false
