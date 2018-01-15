@@ -69,7 +69,7 @@
     "watch": "supervisor --watch build --quiet --exec npm -- run start"
   },
   "engines": {
-    "node": "8.x.x",
+    "node": "9.x.x",
     "npm": "5.x.x"
   }
 }
