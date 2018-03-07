@@ -77,9 +77,9 @@ right versions are installed, please run:
 
 ```console
 $ node -v
-v8.4.0
+v9.7.1
 $ npm -v
-5.4.1
+5.6.0
 ```
 
 The `node` version should be 8 or greater and the `npm` version should
