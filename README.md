@@ -47,7 +47,7 @@ and/or organizations to that workspace.
 
 [atm-app]: https://app.atomist.com/ (Atomist Web Interface)
 
-### Slack and GitHub
+### Slack
 
 Atomist has a powerful [Slack][slackhq] application, allowing you to
 see and act on your development activity right in Slack.  Slack is not
