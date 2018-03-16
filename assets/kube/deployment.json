@@ -35,11 +35,11 @@
             "imagePullPolicy": "IfNotPresent",
             "env": [
               {
-                "name": "ATOMIST_TEAM",
+                "name": "ATOMIST_TEAMS",
                 "value": "TEAM_ID"
               },
               {
-                "name": "GITHUB_TOKEN",
+                "name": "ATOMIST_TOKEN",
                 "value": "YOUR_TOKEN"
               }
             ],

@@ -32,7 +32,7 @@ describe("NotifyOnPush", () => {
         { name: "coloring-book" },
     ];
 
-    it("should send a notification to a channel", done => {
+    it("should send a notification to a channel", async () => {
         const pushEvent = {
             data: {
                 Push: [{
@@ -57,16 +57,14 @@ describe("NotifyOnPush", () => {
             },
         } as HandlerContext;
 
-        const promise = nop.handle(pushEvent, ctx);
-        promise.then(result => {
-            assert(result.code === 0);
-            assert(responseMessage.indexOf(sha) > 0);
-            assert(responseChannels.length === 1);
-            assert(responseChannels[0] === channels[0].name);
-        }).then(done, done);
+        const result = await nop.handle(pushEvent, ctx);
+        assert(result.code === 0);
+        assert(responseMessage.indexOf(sha) > 0);
+        assert(responseChannels.length === 1);
+        assert(responseChannels[0] === channels[0].name);
     });
 
-    it("should send a notification to all repo channels", done => {
+    it("should send a notification to all repo channels", async () => {
         const pushEvent = {
             data: {
                 Push: [{
@@ -91,15 +89,13 @@ describe("NotifyOnPush", () => {
             },
         } as HandlerContext;
 
-        const promise = nop.handle(pushEvent, ctx);
-        promise.then(result => {
-            assert(result.code === 0);
-            assert(responseMessage.indexOf(sha) > 0);
-            assert.deepEqual(responseChannels, channels.map(c => c.name));
-        }).then(done, done);
+        const result = await nop.handle(pushEvent, ctx);
+        assert(result.code === 0);
+        assert(responseMessage.indexOf(sha) > 0);
+        assert.deepEqual(responseChannels, channels.map(c => c.name));
     });
 
-    it("should send no notifications if no channels", done => {
+    it("should send no notifications if no channels", async () => {
         const pushEvent = {
             data: {
                 Push: [{
@@ -124,12 +120,10 @@ describe("NotifyOnPush", () => {
             },
         } as HandlerContext;
 
-        const promise = nop.handle(pushEvent, ctx);
-        promise.then(result => {
-            assert(result.code === 0);
-            assert(responseMessage === undefined);
-            assert(responseChannels === undefined);
-        }).then(done, done);
+        const result = await nop.handle(pushEvent, ctx);
+        assert(result.code === 0);
+        assert(responseMessage === undefined);
+        assert(responseChannels === undefined);
     });
 
 });

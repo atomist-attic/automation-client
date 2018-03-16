@@ -7,11 +7,24 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
 
-[Unreleased]: https://github.com/atomist/automation-seed-ts/compare/0.7.0...HEAD
+[Unreleased]: https://github.com/atomist/automation-seed-ts/compare/0.8.0...HEAD
+
+## [0.8.0][] - 2018-03-19
+
+[0.8.0]: https://github.com/atomist/automation-seed-ts/compare/0.7.0...0.8.0
+
+Configuration release
 
 ### Changed
 
 -   Remove generated types when cleaning
+-   Update @atomist/automation-client
+-   Only install production dependencies in Docker build
+-   Move sample Kubernetes deployment spec to assets/kube
+
+### Removed
+
+-   atomist.config.ts, it is no longer necessary
 
 ## [0.7.0][] - 2018-02-06
 
