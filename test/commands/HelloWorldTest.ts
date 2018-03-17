@@ -28,6 +28,15 @@ LoggingConfig.format = "cli";
 
 describe("HelloWorld", () => {
 
+    before(() => {
+        // console.log(`runningAutomationClient:${JSON.stringify(runningAutomationClient)}`);
+    });
+
+    after(() => {
+        // (global as any).asyncDump();
+        // console.log(`runningAutomationClient:${JSON.stringify(runningAutomationClient)}`);
+    });
+
     const hello = new HelloWorld();
     hello.name = "Chance the Rapper";
     hello.slackUser = "LilChano";
@@ -35,7 +44,7 @@ describe("HelloWorld", () => {
     const forename = "Chancelor";
     const surname = "Bennett";
 
-    it("should extract sender person", done => {
+    it("should extract sender person", async () => {
         let responseMessage: string;
         const ctx = {
             graphClient: {
@@ -64,15 +73,13 @@ describe("HelloWorld", () => {
             teamId,
         } as HandlerContext;
 
-        const promise = hello.handle(ctx);
-        promise.then(result => {
-            assert(result.code === 0);
-            assert(responseMessage === `Hello ${hello.name} from ${forename} ${surname}`);
-        }).then(done, done);
+        const result = await hello.handle(ctx);
+        assert(result.code === 0);
+        assert(responseMessage === `Hello ${hello.name} from ${forename} ${surname}`);
 
     });
 
-    it("should respond when no sender person found", done => {
+    it("should respond when no sender person found", async () => {
         let responseMessage: string;
         const ctx = {
             graphClient: {
@@ -93,11 +100,9 @@ describe("HelloWorld", () => {
             teamId,
         } as HandlerContext;
 
-        const promise = hello.handle(ctx);
-        promise.then(result => {
-            assert(result.code === 0);
-            assert(responseMessage === `Hello ${hello.name}`);
-        }).then(done, done);
+        const result = await hello.handle(ctx);
+        assert(result.code === 0);
+        assert(responseMessage === `Hello ${hello.name}`);
     });
 
 });
