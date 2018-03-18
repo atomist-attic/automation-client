@@ -18,7 +18,7 @@
     "seed"
   ],
   "dependencies": {
-    "@atomist/automation-client": "https://atomist.jfrog.io/atomist/npm-dev/@atomist/automation-client/-/@atomist/automation-client-0.8.0-global-running-client.20180317140257.tgz",
+    "@atomist/automation-client": "https://r.atomist.com/B1V0366itf",
     "app-root-path": "^2.0.1"
   },
   "devDependencies": {
