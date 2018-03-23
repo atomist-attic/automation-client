@@ -18,10 +18,10 @@ module to implement a local client that connects to the Atomist API.
 ## Prerequisites
 
 Below are brief instructions on how to get started running this
-project yourself.  If you just want to use the functionality this
-project provides, see the [Atomist documentation][docs].  For more
-detailed information on developing automations, see
-the [Atomist Developer Guide][dev].
+project yourself.  If you just want to use the core functionality of
+Atomist, see the [Atomist documentation][docs].  For more detailed
+information on developing automations, see the [Atomist Developer
+Guide][dev].
 
 [docs]: https://docs.atomist.com/ (Atomist User Guide)
 [dev]: https://docs.atomist.com/developer/ (Atomist Developer Guide)
@@ -35,7 +35,12 @@ instructions assume you have a GitHub.com account.  If you do not
 already have a GitHub.com account, you can [create
 one][github-create].
 
+To run automations, you will need a GitHub [personal access
+token][token] with "read:org" scope.  You can create one yourself or
+use the Atomist CLI to do it for you (see below).
+
 [github-create]: https://github.com/join (Join GitHub)
+[token]: https://github.com/settings/tokens (GitHub Personal Access Tokens)
 
 ### Atomist workspace
 
@@ -44,6 +49,12 @@ you have a GitHub.com account, you can sign up with Atomist at
 [https://app.atomist.com/][atm-app].  Once you are registered with
 Atomist, you can create an Atomist workspace and add your GitHub user
 and/or organizations to that workspace.
+
+Once you have created your Atomist workspace, take note of your
+Atomist workspace/team ID.  You can always find your Atomist workspace
+ID on the workspace's settings page or, if you have added the Atomist
+app to Slack, you can send the Atomist bot the message `team` and it
+will tell you the workspace/team ID.
 
 [atm-app]: https://app.atomist.com/ (Atomist Web Interface)
 
@@ -70,48 +81,19 @@ Atomist, Slack, and GitHub.
 [slackhq]: https://slack.com/ (Slack)
 [slack-team]: https://slack.com/get-started#create (Create a Slack Team)
 
-### Node.js
+### Configuration
 
-You will need to have [Node.js][node] installed.  To verify that the
-right versions are installed, please run:
-
-```console
-$ node -v
-v9.7.1
-$ npm -v
-5.6.0
-```
-
-The `node` version should be 8 or greater and the `npm` version should
-be 5 or greater.
-
-[node]: https://nodejs.org/ (Node.js)
-
-### Cloning the repository and installing dependencies
-
-To get started run the following commands to clone the project,
-install its dependencies, and build the project:
+Once you have GitHub and Atomist set up, install the Atomist CLI and
+configure your local environment.
 
 ```console
-$ git clone git@github.com:atomist/automation-seed-ts.git
-$ cd automation-seed-ts
-$ npm install
-$ npm run build
+$ npm install -g @atomist/automation-client
+$ atomist config
 ```
 
-### Configuring your environment
-
-If this is the first time you will be running an Atomist API client
-locally, you should first configure your system using the `atomist`
-script:
-
-```console
-$ `npm bin`/atomist config
-```
-
-The script does two things: records what Slack team you want your
-automations running in and creates
-a [GitHub personal access token][token] with "repo" and "read:org"
+The second command does two things: records what Atomist
+workspace/team you want your automations running in and creates a
+[GitHub personal access token][token] with "repo" and "read:org"
 scopes.
 
 The script will prompt you for your Atomist workspace/team ID, or you
@@ -130,9 +112,70 @@ you are and are in a GitHub organization connected to the Slack team
 in which you are running the automations.  In addition, it uses the
 token when performing any operations that access the GitHub API.
 
-[token]: https://github.com/settings/tokens (GitHub Personal Access Tokens)
+## Running
 
-## Starting up the automation-client
+You can run this automation using its Docker container, e.g., in
+Kubernetes, or locally.
+
+### Docker and Kubernetes
+
+To download and run the Docker image of this project, run the
+following command
+
+```console
+$ docker run --rm -e ATOMIST_TOKEN=YOUR_TOKEN -e ATOMIST_TEAMS=TEAM_ID \
+    atomist/automation-seed-ts:VERSION
+```
+
+replacing `YOUR_TOKEN` and `TEAM_ID` with the token and team ID from
+your `~/.atomist/client.config.json` created above by the `atomist
+config` command and `VERSION` with the [latest release of this
+repo][latest].  Note that this will not be running any code from your
+local machine but the code in the Docker image.
+
+To run the Docker image in a Kubernetes cluster, you can use the
+[deployment spec](assets/kube/deployment.yaml) from this repository as
+a starting point.  Before creating the deployment resource, you will
+need to create a secret with the following command, replacing `TOKEN`
+and `TEAM_ID` as above.
+
+```console
+$ kubectl create secret generic automation --from-file=$HOME/.atomist/client.config.json
+$ kubectl create -f assets/kube/deployment.yaml
+```
+
+[latest]: https://github.com/atomist/automation-seed-ts/releases/latest
+
+### Locally
+
+You will need to have [Node.js][node] installed.  To verify that the
+right versions are installed, run:
+
+```console
+$ node -v
+v9.7.1
+$ npm -v
+5.6.0
+```
+
+The `node` version should be 8 or greater and the `npm` version should
+be 5 or greater.
+
+[node]: https://nodejs.org/ (Node.js)
+
+#### Cloning the repository and installing dependencies
+
+To get started run the following commands to clone the project,
+install its dependencies, and build the project:
+
+```console
+$ git clone git@github.com:atomist/automation-seed-ts.git
+$ cd automation-seed-ts
+$ npm install
+$ npm run build
+```
+
+#### Starting up the automation-client
 
 You can run this repository locally, allowing you to change the source
 code of this project and immediately see the effects in your environment
@@ -146,37 +189,12 @@ To run in a more traditional manner, build the project and then simple
 start it.
 
 ```console
-$ npm run build
 $ npm start
 ```
 
-To download and run the Docker image of this project, run the
-following command
+## Using
 
-```console
-$ docker run --rm -e GITHUB_TOKEN=YOUR_TOKEN -e ATOMIST_TEAM=TEAM_ID \
-    atomist/automation-seed-ts:VERSION
-```
-
-replacing `YOUR_TOKEN` and `TEAM_ID` with the token and team ID from
-your `~/.atomist/client.config.json` created by the `atomist config`
-command and `VERSION` with the [latest release of this repo][latest].
-Note that this will not be running any code from your local machine
-but the code in the Docker image.
-
-To run the Docker image in a Kubernetes cluster, you can use the
-[deployment spec](automation-seed-deployment.json) from this
-repository, replacing `YOUR_TOKEN`, `TEAM_ID` (twice!), and `VERSION`
-in the spec as above in the Docker run command, and running the
-following command
-
-```console
-$ kubectl create -f automation-seed-deployment.json
-```
-
-[latest]: https://github.com/atomist/automation-seed-ts/releases/latest
-
-## Invoking a command handler from Slack
+### Invoking a command handler from Slack
 
 This project contains the code to create and respond to a simple
 `hello world` bot command.  The code that defines the bot command and
@@ -202,7 +220,7 @@ bot in Slack.
 Feel free to modify the code in the `HelloWorld` command handler,
 Node.js will automatically reload the client, and see what happens!
 
-## Triggering an event handler
+### Triggering an event handler
 
 While command handlers respond to commands you send the Atomist bot,
 _event handlers_ take action when different types of events occur in
