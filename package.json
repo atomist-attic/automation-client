@@ -18,7 +18,7 @@
     "seed"
   ],
   "dependencies": {
-    "@atomist/automation-client": "^0.11.2"
+    "@atomist/automation-client": "^0.12.1"
   },
   "devDependencies": {
     "@types/app-root-path": "^1.2.4",
