@@ -7,7 +7,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
 
-[Unreleased]: https://github.com/atomist/automation-seed-ts/compare/0.8.0...HEAD
+[Unreleased]: https://github.com/atomist/automation-seed-ts/compare/0.9.0...HEAD
+
+## [0.9.0][] - 2018-04-10
+
+[0.9.0]: https://github.com/atomist/automation-seed-ts/compare/0.8.0...0.9.0
+
+Hello release
+
+### Added
+
+-   HelloAutomation command handler
 
 ## [0.8.0][] - 2018-03-19
 
