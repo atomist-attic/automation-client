@@ -32,7 +32,7 @@ import { hostname } from "os";
 const pj: any = require(`${appRoot.path}/package.json`);
 
 @CommandHandler("sends information about this automation back to channel", `hello ${pj.name.replace(/^@/, "")}`)
-@Tags("hello")
+@Tags("hello", "automation")
 export class HelloAutomation implements HandleCommand {
 
     public handle(ctx: HandlerContext): Promise<HandlerResult> {

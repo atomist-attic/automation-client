@@ -7,7 +7,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
 
-[Unreleased]: https://github.com/atomist/automation-seed-ts/compare/0.9.0...HEAD
+[Unreleased]: https://github.com/atomist/automation-seed-ts/compare/0.10.0...HEAD
+
+## [0.10.0][] - 2018-04-13
+
+[0.10.0]: https://github.com/atomist/automation-seed-ts/compare/0.9.0...0.10.0
+
+GraphQL release
+
+### Changed
+
+-   Updated to use new GraphQL client interfaces
 
 ## [0.9.0][] - 2018-04-10
 

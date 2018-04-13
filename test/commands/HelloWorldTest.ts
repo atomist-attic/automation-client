@@ -34,14 +34,25 @@ describe("HelloWorld", () => {
     const teamId = "T79TH";
     const forename = "Chancelor";
     const surname = "Bennett";
+    const emptyResponse = Promise.resolve({
+        ChatTeam: [{
+            members: [],
+        }],
+    });
 
     it("should extract sender person", async () => {
         let responseMessage: string;
         const ctx = {
             graphClient: {
-                executeQueryFromFile(queryFile: string, params: Person.Variables): Promise<Person.Query> {
-                    if (params.slackUser !== hello.slackUser || params.teamId !== teamId) {
-                        return null;
+                query(opts: any): Promise<Person.Query> {
+                    if (!opts.name || opts.name !== "person") {
+                        return emptyResponse;
+                    }
+                    if (!opts.variables || opts.variables.slackUser !== hello.slackUser) {
+                        return emptyResponse;
+                    }
+                    if (!opts.variables || opts.variables.teamId !== teamId) {
+                        return emptyResponse;
                     }
                     return Promise.resolve({
                         ChatTeam: [{
@@ -74,12 +85,8 @@ describe("HelloWorld", () => {
         let responseMessage: string;
         const ctx = {
             graphClient: {
-                executeQueryFromFile(queryFile: string, params: Person.Variables): Promise<Person.Query> {
-                    return Promise.resolve({
-                        ChatTeam: [{
-                            members: [],
-                        }],
-                    });
+                query(opts: any): Promise<Person.Query> {
+                    return emptyResponse;
                 },
             },
             messageClient: {
