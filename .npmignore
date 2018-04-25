@@ -14,7 +14,7 @@
 /test/
 /CO*.md
 /Dockerfile
-/*-deployment.json
+/assets/kube/
 /ts*.json
 *.log
 *.txt
