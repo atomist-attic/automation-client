@@ -24,7 +24,7 @@ import {
     success,
     Tags,
 } from "@atomist/automation-client";
-import { runningAutomationClient } from "@atomist/automation-client/automationClient";
+import { automationClientInstance } from "@atomist/automation-client/automationClient";
 import * as appRoot from "app-root-path";
 import { hostname } from "os";
 
@@ -36,7 +36,7 @@ const pj: any = require(`${appRoot.path}/package.json`);
 export class HelloAutomation implements HandleCommand {
 
     public handle(ctx: HandlerContext): Promise<HandlerResult> {
-        const cfg = runningAutomationClient.configuration;
+        const cfg = automationClientInstance().configuration;
         const pkg = `${pj.name}:${pj.version}`;
         const atm = `${cfg.name}:${cfg.version}`;
         const name = (pkg === atm) ? pkg : `package ${pkg} automation ${atm}`;
