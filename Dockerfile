@@ -1,6 +1,6 @@
 FROM node:9
 
-LABEL maintainer="david@atomist.com"
+LABEL maintainer="David Dooling <david@atomist.com>"
 
 ENV DUMB_INIT_VERSION=1.2.1
 
@@ -22,6 +22,10 @@ ENTRYPOINT ["dumb-init", "node", "--trace-warnings", "--expose_gc", "--optimize_
 
 CMD ["node_modules/@atomist/automation-client/start.client.js"]
 
-COPY . .
+RUN npm install -g npm@6.0.0
 
-RUN npm install --only=production
+COPY package.json package-lock.json ./
+
+RUN npm ci --only=production
+
+COPY . .
