@@ -1,7 +1,6 @@
 # @atomist/automation-seed
 
 [![npm version](https://badge.fury.io/js/%40atomist%2Fautomation-seed.svg)](https://badge.fury.io/js/%40atomist%2Fautomation-seed)
-[![Build Status](https://travis-ci.org/atomist/automation-seed-ts.svg?branch=master)](https://travis-ci.org/atomist/automation-seed-ts)
 
 This repository contains examples demonstrating use of
 the [Atomist][atomist] API.  You will find examples illustrating:
@@ -16,6 +15,10 @@ module to implement a local client that connects to the Atomist API.
 [client]: https://github.com/atomist/automation-client-ts (@atomist/automation-client Node Module)
 
 ## Prerequisites
+
+See the [Atomist getting started][enrollment] documentation.
+
+[enrollment]: https://github.com/atomist/welcome/blob/master/enroll.md (Atomist - Getting Started)
 
 Below are brief instructions on how to get started running this
 project yourself.  If you just want to use the core functionality of
@@ -281,24 +284,10 @@ Command | Reason
 
 ### Release
 
-To create a new release of the project, update the version in
-package.json and then push a tag for the version.  The version must be
-of the form `M.N.P` where `M`, `N`, and `P` are integers that form the
-next appropriate [semantic version][semver] for release.  The version
-in the package.json must be the same as the tag.  For example:
+Releases are managed by the [Atomist SDM][atomist-sdm].  Press the
+"Release" button in the Atomist dashboard or Slack.
 
-[semver]: http://semver.org
-
-```console
-$ npm version 1.2.3
-$ git tag -a -m 'The ABC release' 1.2.3
-$ git push origin 1.2.3
-```
-
-The Travis CI build (see badge at the top of this page) will publish
-the NPM module and automatically create a GitHub release using the tag
-name for the release and the comment provided on the annotated tag as
-the contents of the release notes.
+[atomist-sdm]: https://github.com/atomist/atomist-sdm (Atomist Software Delivery Machine)
 
 ---
 

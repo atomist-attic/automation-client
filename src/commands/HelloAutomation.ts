@@ -23,8 +23,8 @@ import {
     logger,
     success,
     Tags,
+    Value,
 } from "@atomist/automation-client";
-import { automationClientInstance } from "@atomist/automation-client/automationClient";
 import * as appRoot from "app-root-path";
 import { hostname } from "os";
 
@@ -35,14 +35,24 @@ const pj: any = require(`${appRoot.path}/package.json`);
 @Tags("hello", "automation")
 export class HelloAutomation implements HandleCommand {
 
+    @Value("name")
+    private name: string;
+    @Value("version")
+    private version: string;
+    @Value("teamIds")
+    private teamIds: string[];
+    @Value("groups")
+    private groups: string[];
+    @Value("environment")
+    private environment: string;
+
     public handle(ctx: HandlerContext): Promise<HandlerResult> {
-        const cfg = automationClientInstance().configuration;
         const pkg = `${pj.name}:${pj.version}`;
-        const atm = `${cfg.name}:${cfg.version}`;
+        const atm = `${this.name}:${this.version}`;
         const name = (pkg === atm) ? pkg : `package ${pkg} automation ${atm}`;
-        const target = (cfg.teamIds.length > 1) ? `teams ${cfg.teamIds.join(", ")}` :
-            ((cfg.teamIds.length > 0) ? `team ${cfg.teamIds[0]}` :
-                ((cfg.groups.length > 1) ? `groups ${cfg.groups.join(", ")}` : `group ${cfg.groups[0]}`));
+        const target = (this.teamIds.length > 1) ? `teams ${this.teamIds.join(", ")}` :
+            ((this.teamIds.length > 0) ? `team ${this.teamIds[0]}` :
+                ((this.groups.length > 1) ? `groups ${this.groups.join(", ")}` : `group ${this.groups[0]}`));
         let git = "";
         try {
             // tslint:disable-next-line:no-var-requires
@@ -51,7 +61,7 @@ export class HelloAutomation implements HandleCommand {
         } catch (e) {
             logger.debug(`unable to require git-info.json: ${e.message}`);
         }
-        const msg = `Hello from ${name} on ${hostname()} in ${cfg.environment} for ${target}${git}`;
+        const msg = `Hello from ${name} on ${hostname()} in ${this.environment} for ${target}${git}`;
         return ctx.messageClient.respond(msg)
             .then(success, failure);
     }

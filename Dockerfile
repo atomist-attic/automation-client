@@ -1,6 +1,6 @@
 FROM node:9
 
-LABEL maintainer="David Dooling <david@atomist.com>"
+LABEL maintainer="Atomist <docker@atomist.com>"
 
 ENV DUMB_INIT_VERSION=1.2.1
 

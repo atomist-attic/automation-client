@@ -18,7 +18,7 @@
     "seed"
   ],
   "dependencies": {
-    "@atomist/automation-client": "^0.14.1",
+    "@atomist/automation-client": "^0.17.3",
     "app-root-path": "^2.0.1"
   },
   "devDependencies": {
@@ -47,7 +47,7 @@
   "scripts": {
     "autostart": "nodemon --watch src --ext ts --exec ts-node -- node_modules/@atomist/automation-client/start.client.js",
     "autotest": "supervisor --watch src,test --extensions ts --no-restart-on exit --quiet --exec npm -- test",
-    "build": "npm-run-all lint compile test typedoc",
+    "build": "npm-run-all compile test lint typedoc",
     "clean": "npm-run-all clean:js clean:build",
     "clean:build": "npm-run-all clean:gql clean:ts clean:run",
     "clean:dist": "npm-run-all clean clean:npm",
