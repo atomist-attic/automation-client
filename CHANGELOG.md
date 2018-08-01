@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 -   Reorganize package to have more standard Node.js layout.
 -   Update dependencies.
+-   Update TypeScript packages.
 
 ## [0.10.0](https://github.com/atomist/automation-seed-ts/compare/0.9.0...0.10.0) - 2018-04-13
 
