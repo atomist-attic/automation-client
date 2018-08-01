@@ -14,13 +14,15 @@
  * limitations under the License.
  */
 
-import "mocha";
 import * as assert from "power-assert";
 
-import { EventFired, HandlerContext } from "@atomist/automation-client/Handlers";
+import {
+    EventFired,
+    HandlerContext,
+} from "@atomist/automation-client";
 
-import { NotifyOnPush } from "../../src/events/NotifyOnPush";
-import { PushWithRepo } from "../../src/typings/types";
+import { NotifyOnPush } from "../../lib/events/NotifyOnPush";
+import { PushWithRepo } from "../../lib/typings/types";
 
 describe("NotifyOnPush", () => {
 

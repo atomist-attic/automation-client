@@ -8,13 +8,14 @@
 .npmrc*
 .travis.yml
 /build/
+/doc/
 /config/
+/log/
 /scripts/
 /src/
 /test/
 /CO*.md
 /Dockerfile
 /assets/kube/
-/ts*.json
 *.log
 *.txt

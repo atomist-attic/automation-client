@@ -14,14 +14,16 @@
  * limitations under the License.
  */
 
-import "mocha";
 import * as assert from "power-assert";
 
-import { HandlerContext, logger } from "@atomist/automation-client";
-import { LoggingConfig } from "@atomist/automation-client/internal/util/logger";
+import {
+    HandlerContext,
+    logger,
+    LoggingConfig,
+} from "@atomist/automation-client";
 
-import { HelloWorld } from "../../src/commands/HelloWorld";
-import { Person } from "../../src/typings/types";
+import { HelloWorld } from "../../lib/commands/HelloWorld";
+import { Person } from "../../lib/typings/types";
 
 LoggingConfig.format = "cli";
 (logger as any).level = process.env.LOG_LEVEL || "info";

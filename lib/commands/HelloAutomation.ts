@@ -36,15 +36,15 @@ const pj: any = require(`${appRoot.path}/package.json`);
 export class HelloAutomation implements HandleCommand {
 
     @Value("name")
-    private name: string;
+    private readonly name: string;
     @Value("version")
-    private version: string;
+    private readonly version: string;
     @Value("teamIds")
-    private teamIds: string[];
+    private readonly teamIds: string[];
     @Value("groups")
-    private groups: string[];
+    private readonly groups: string[];
     @Value("environment")
-    private environment: string;
+    private readonly environment: string;
 
     public handle(ctx: HandlerContext): Promise<HandlerResult> {
         const pkg = `${pj.name}:${pj.version}`;

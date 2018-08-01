@@ -5,23 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased][]
+## [Unreleased](https://github.com/atomist/automation-seed-ts/compare/0.10.0...HEAD)
 
-[Unreleased]: https://github.com/atomist/automation-seed-ts/compare/0.10.0...HEAD
+### Changed
 
-## [0.10.0][] - 2018-04-13
+-   Reorganize package to have more standard Node.js layout.
+-   Update dependencies.
 
-[0.10.0]: https://github.com/atomist/automation-seed-ts/compare/0.9.0...0.10.0
+## [0.10.0](https://github.com/atomist/automation-seed-ts/compare/0.9.0...0.10.0) - 2018-04-13
 
 GraphQL release
 
 ### Changed
 
--   Updated to use new GraphQL client interfaces
+-   Update to use new GraphQL client interfaces
 
-## [0.9.0][] - 2018-04-10
-
-[0.9.0]: https://github.com/atomist/automation-seed-ts/compare/0.8.0...0.9.0
+## [0.9.0](https://github.com/atomist/automation-seed-ts/compare/0.8.0...0.9.0) - 2018-04-10
 
 Hello release
 
@@ -29,9 +28,7 @@ Hello release
 
 -   HelloAutomation command handler
 
-## [0.8.0][] - 2018-03-19
-
-[0.8.0]: https://github.com/atomist/automation-seed-ts/compare/0.7.0...0.8.0
+## [0.8.0](https://github.com/atomist/automation-seed-ts/compare/0.7.0...0.8.0) - 2018-03-19
 
 Configuration release
 
@@ -46,9 +43,7 @@ Configuration release
 
 -   atomist.config.ts, it is no longer necessary
 
-## [0.7.0][] - 2018-02-06
-
-[0.7.0]: https://github.com/atomist/automation-seed-ts/compare/0.6.0...0.7.0
+## [0.7.0](https://github.com/atomist/automation-seed-ts/compare/0.6.0...0.7.0) - 2018-02-06
 
 Kubernetes release
 
@@ -60,9 +55,7 @@ Kubernetes release
 
 -   Docker CMD
 
-## [0.6.0][] - 2018-02-05
-
-[0.6.0]: https://github.com/atomist/automation-seed-ts/compare/0.5.0...0.6.0
+## [0.6.0](https://github.com/atomist/automation-seed-ts/compare/0.5.0...0.6.0) - 2018-02-05
 
 Docker release
 
@@ -78,9 +71,7 @@ Docker release
 
 -   Fix autotest package script
 
-## [0.5.0][] - 2018-01-31
-
-[0.5.0]: https://github.com/atomist/automation-seed-ts/compare/0.4.0...0.5.0
+## [0.5.0](https://github.com/atomist/automation-seed-ts/compare/0.4.0...0.5.0) - 2018-01-31
 
 Autostart release
 
@@ -97,9 +88,7 @@ Autostart release
     Atomist
 -   Travis CI build script can publish to S3 buckets
 
-## [0.4.0][] - 2018-01-17
-
-[0.4.0]: https://github.com/atomist/automation-seed-ts/compare/0.3.0...0.4.0
+## [0.4.0](https://github.com/atomist/automation-seed-ts/compare/0.3.0...0.4.0) - 2018-01-17
 
 Build release
 
@@ -109,9 +98,7 @@ Build release
 -   Update package scripts to use `atomist gql-gen` to generate
     TypeScript from GraphQL
 
-## [0.3.0][] - 2018-01-08
-
-[0.3.0]: https://github.com/atomist/automation-seed-ts/compare/0.2.0...0.3.0
+## [0.3.0](https://github.com/atomist/automation-seed-ts/compare/0.2.0...0.3.0) - 2018-01-08
 
 Portable release
 
@@ -122,9 +109,7 @@ Portable release
 -   Updated TypeDoc generation
 -   Make package scripts more standardized and portable
 
-## [0.2.0][] - 2017-11-22
-
-[0.2.0]: https://github.com/atomist/automation-seed-ts/compare/0.1.0...0.2.0
+## [0.2.0](https://github.com/atomist/automation-seed-ts/compare/0.1.0...0.2.0) - 2017-11-22
 
 Update release
 
@@ -136,11 +121,9 @@ Update release
 -   Cleaned up tests to use `.then(done, done)`
 -   Updated to @atomist/automation-client 0.3.4
 
-## [0.1.0][] - 2017-10-12
+## [0.1.0](https://github.com/atomist/automation-seed-ts/tree/0.1.0) - 2017-10-12
 
 Initial release
-
-[0.1.0]: https://github.com/atomist/automation-seed-ts/tree/0.1.0
 
 ### Added
 

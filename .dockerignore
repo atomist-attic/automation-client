@@ -9,13 +9,13 @@
 .atomist/
 assets/kube/
 node_modules/
-build/test/
-build/typedoc/
+build/
+doc/
+logs/
 scripts/
 src/
 test/
 CO*.md
-*-deployment.json
 ts*.json
 **/*.log
 **/*.txt
