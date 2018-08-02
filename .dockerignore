@@ -7,7 +7,7 @@
 .npm*
 .travis.yml
 .atomist/
-assets/kube/
+assets/kubectl/
 node_modules/
 build/
 doc/
