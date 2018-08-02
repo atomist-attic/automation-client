@@ -5,7 +5,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -39,8 +39,8 @@ export class HelloAutomation implements HandleCommand {
     private readonly name: string;
     @Value("version")
     private readonly version: string;
-    @Value("teamIds")
-    private readonly teamIds: string[];
+    @Value("workspaceIds")
+    private readonly workspaceIds: string[];
     @Value("groups")
     private readonly groups: string[];
     @Value("environment")
@@ -50,8 +50,8 @@ export class HelloAutomation implements HandleCommand {
         const pkg = `${pj.name}:${pj.version}`;
         const atm = `${this.name}:${this.version}`;
         const name = (pkg === atm) ? pkg : `package ${pkg} automation ${atm}`;
-        const target = (this.teamIds.length > 1) ? `teams ${this.teamIds.join(", ")}` :
-            ((this.teamIds.length > 0) ? `team ${this.teamIds[0]}` :
+        const target = (this.workspaceIds.length > 1) ? `teams ${this.workspaceIds.join(", ")}` :
+            ((this.workspaceIds.length > 0) ? `team ${this.workspaceIds[0]}` :
                 ((this.groups.length > 1) ? `groups ${this.groups.join(", ")}` : `group ${this.groups[0]}`));
         let git = "";
         try {
