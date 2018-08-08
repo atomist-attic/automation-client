@@ -19,3 +19,5 @@
 /assets/kubectl/
 *.log
 *.txt
+*.ts
+!*.d.ts
