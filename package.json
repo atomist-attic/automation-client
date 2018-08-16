@@ -20,7 +20,7 @@
   "main": "./index.js",
   "types": "./index.d.ts",
   "dependencies": {
-    "@atomist/automation-client": "^0.20.1",
+    "@atomist/automation-client": "^0.20.2",
     "@types/app-root-path": "^1.2.4",
     "app-root-path": "^2.0.1"
   },
