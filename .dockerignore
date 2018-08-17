@@ -11,7 +11,7 @@ assets/kubectl/
 node_modules/
 build/
 doc/
-logs/
+log/
 scripts/
 src/
 test/

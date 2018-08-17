@@ -9,10 +9,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 
+-   Better layer Docker build to allow preserving unchanged dependencies.
 -   Reorganize package to have more standard Node.js layout.
 -   Update dependencies.
--   Update TypeScript packages.
+-   Update TypeScript packages and configuration.
 -   Use automation-client scripts in package scripts.
+-   Relocate Kubernetes assets.
+
+### Added
+
+-   Provide Kubernetes deployment patch suitable for use by k8-automation.
 
 ## [0.10.0](https://github.com/atomist/automation-seed-ts/compare/0.9.0...0.10.0) - 2018-04-13
 
