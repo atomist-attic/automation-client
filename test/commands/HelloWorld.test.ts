@@ -47,7 +47,7 @@ describe("HelloWorld", () => {
         const ctx = {
             graphClient: {
                 query(opts: any): Promise<Person.Query> {
-                    if (!opts.name || opts.name !== "person") {
+                    if (!opts.name || opts.name !== "Person") {
                         return emptyResponse;
                     }
                     if (!opts.variables || opts.variables.slackUser !== hello.slackUser) {

@@ -57,7 +57,7 @@ export class HelloWorld implements HandleCommand {
         }
 
         return ctx.graphClient.query<Person.Query, Person.Variables>({
-            name: "person",
+            name: "Person",
             variables: { teamId: ctx.teamId, slackUser: this.slackUser },
         })
             .then(result => {
