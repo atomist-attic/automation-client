@@ -1,6 +1,6 @@
 {
   "name": "@atomist/automation-seed",
-  "version": "0.11.1",
+  "version": "0.12.0",
   "description": "Atomist automation client seed project",
   "author": "Atomist",
   "license": "Apache-2.0",
@@ -20,7 +20,7 @@
   "main": "./index.js",
   "types": "./index.d.ts",
   "dependencies": {
-    "@atomist/automation-client": "^0.20.3",
+    "@atomist/automation-client": "^0.21.1",
     "@types/app-root-path": "^1.2.4",
     "app-root-path": "^2.0.1"
   },
@@ -45,7 +45,7 @@
     "test": "test"
   },
   "scripts": {
-    "autostart": "nodemon --watch index.ts,lib --ext ts --exec ts-node -- node_modules/@atomist/automation-client/start.client.js",
+    "autostart": "nodemon --watch index.ts --watch lib --ext ts --delay 4 --exec ts-node -- node_modules/@atomist/automation-client/bin/start.js",
     "autotest": "supervisor --watch index.ts,lib,test --extensions ts --no-restart-on exit --quiet --exec npm -- test",
     "build": "run-s compile test lint doc",
     "clean": "run-p clean:compile clean:doc clean:run",
@@ -58,11 +58,11 @@
     "compile:ts": "tsc --project .",
     "doc": "typedoc --mode modules --ignoreCompilerErrors --exclude \"**/*.d.ts\" --out doc index.ts lib",
     "fmt": "tsfmt --replace",
-    "git:info": "node node_modules/@atomist/automation-client/start.git-info.js",
-    "gql:gen": "node node_modules/@atomist/automation-client/start.gql-gen.js",
-    "lint": "tslint --format verbose --project . --exclude \"{build,node_modules}/**\" --exclude \"**/*.d.ts\" \"**/*.ts\"",
+    "git:info": "atm-git-info",
+    "gql:gen": "atm-gql-gen",
+    "lint": "tslint --format verbose --project . --exclude \"node_modules/**\" --exclude \"**/*.d.ts\" \"**/*.ts\"",
     "lint:fix": "npm run lint -- --fix",
-    "start": "node node_modules/@atomist/automation-client/start.client.js",
+    "start": "atm-start",
     "test": "mocha --require espower-typescript/guess \"test/**/*.test.ts\"",
     "test:one": "mocha --require espower-typescript/guess \"test/**/${TEST:-*.test.ts}\"",
     "typedoc": "npm run doc"

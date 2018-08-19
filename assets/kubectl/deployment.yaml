@@ -3,7 +3,6 @@ kind: Deployment
 apiVersion: extensions/v1beta1
 metadata:
   name: automation-seed
-  namespace: default
   labels:
     app: automation-seed
 spec:
@@ -17,13 +16,10 @@ spec:
       labels:
         app: automation-seed
         version: '0'
-      annotations:
-        atomist.com/k8vent: '{"webhooks":["https://webhook.atomist.com/atomist/kube/teams/TEAM_ID"]}'
-        atomist.com/repo-image: '{"repo":{"owner":"atomist","name":"automation-seed-ts"},"image":"atomist/automation-seed-ts"}'
     spec:
       containers:
       - name: automation-seed
-        image: atomist/automation-seed-ts:0.8.0
+        image: atomist/automation-seed-ts:0.12.0
         imagePullPolicy: IfNotPresent
         env:
         - name: ATOMIST_CONFIG_PATH
@@ -68,7 +64,7 @@ spec:
         secret:
           secretName: automation
       restartPolicy: Always
-      terminationGracePeriodSeconds: 180
+      terminationGracePeriodSeconds: 30
       dnsPolicy: ClusterFirst
   strategy:
     type: RollingUpdate

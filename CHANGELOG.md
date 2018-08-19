@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased](https://github.com/atomist/automation-seed-ts/compare/0.11.0...HEAD)
 
+### Changed
+
+-   Reduced Kubernetes termination grace period.
+-   Update @atomist/automation-client and use its bin scripts in
+    package scripts.
+
+### Fixed
+
+-   Corrected watch of autostart package script.
+
 ## [0.11.0](https://github.com/atomist/automation-seed-ts/compare/0.10.0...0.11.0) - 2018-08-17
 
 ### Changed
