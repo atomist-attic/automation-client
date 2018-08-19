@@ -1,6 +1,6 @@
 {
   "name": "@atomist/automation-seed",
-  "version": "0.12.0",
+  "version": "0.12.1",
   "description": "Atomist automation client seed project",
   "author": "Atomist",
   "license": "Apache-2.0",
