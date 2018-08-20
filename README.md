@@ -35,7 +35,6 @@ CLI][atomist-cli] installed and properly configured on your system.
 [atomist-start]: https://docs.atomist.com/user/ (Atomist - Getting Started)
 [atomist-dev]: https://docs.atomist.com/developer/prerequisites/ (Atomist - Developer Prerequisites)
 [git]: https://git-scm.com/ (Git)
-[node]: https://nodejs.org/ (Node.js)
 [atomist-cli]: https://github.com/atomist/cli (Atomist Command-Line Interface)
 
 ## Running
@@ -131,6 +130,8 @@ If you find a problem, please create an [issue][].
 
 You will need to install [node][] to build and test this project.
 
+[node]: https://nodejs.org/ (Node.js)
+
 ### Build and Test
 
 Use the following package scripts to build, test, and perform other
@@ -158,7 +159,7 @@ release button in the Atomist dashboard or Slack.
 ---
 
 Created by [Atomist][atomist].
-Need Help?  [Join our Slack team][slack].
+Need Help?  [Join our Slack workspace][slack].
 
 [atomist]: https://atomist.com/ (Atomist - How Teams Deliver Software)
 [slack]: https://join.atomist.com/ (Atomist Community Slack)
