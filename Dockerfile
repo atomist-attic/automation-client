@@ -32,6 +32,9 @@ RUN apt-get update && apt-get install -y \
         git \
     && rm -rf /var/lib/apt/lists/*
 
+RUN git config --global user.email "bot@atomist.com" \
+    && git config --global user.name "Atomist Bot"
+
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
     && apt-get install -y nodejs \
     && rm -rf /var/lib/apt/lists/*
