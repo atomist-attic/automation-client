@@ -2,13 +2,17 @@
   "name": "@atomist/automation-seed",
   "version": "0.12.1",
   "description": "Atomist automation client seed project",
-  "author": "Atomist",
+  "author": {
+    "name": "Atomist",
+    "email": "support@atomist.com",
+    "url": "https://atomist.com/"
+  },
   "license": "Apache-2.0",
+  "homepage": "https://github.com/atomist/automation-seed-ts#readme",
   "repository": {
     "type": "git",
     "url": "https://github.com/atomist/automation-seed-ts.git"
   },
-  "homepage": "https://github.com/atomist/automation-seed-ts#readme",
   "bugs": {
     "url": "https://github.com/atomist/automation-seed-ts/issues"
   },
