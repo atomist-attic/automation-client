@@ -33,7 +33,7 @@ describe("HelloWorld", () => {
     const hello = new HelloWorld();
     hello.name = "Chance the Rapper";
     hello.slackUser = "LilChano";
-    const teamId = "T79TH";
+    const workspaceId = "A79TH";
     const forename = "Chancelor";
     const surname = "Bennett";
     const emptyResponse = Promise.resolve({
@@ -44,16 +44,13 @@ describe("HelloWorld", () => {
 
     it("should extract sender person", async () => {
         let responseMessage: string;
-        const ctx = {
+        const ctx: HandlerContext = {
             graphClient: {
                 query(opts: any): Promise<Person.Query> {
                     if (!opts.name || opts.name !== "Person") {
                         return emptyResponse;
                     }
                     if (!opts.variables || opts.variables.slackUser !== hello.slackUser) {
-                        return emptyResponse;
-                    }
-                    if (!opts.variables || opts.variables.teamId !== teamId) {
                         return emptyResponse;
                     }
                     return Promise.resolve({
@@ -74,8 +71,8 @@ describe("HelloWorld", () => {
                     return Promise.resolve(msg);
                 },
             },
-            teamId,
-        } as HandlerContext;
+            workspaceId,
+        } as any;
 
         const result = await hello.handle(ctx);
         assert(result.code === 0);
@@ -85,7 +82,7 @@ describe("HelloWorld", () => {
 
     it("should respond when no sender person found", async () => {
         let responseMessage: string;
-        const ctx = {
+        const ctx: HandlerContext = {
             graphClient: {
                 query(opts: any): Promise<Person.Query> {
                     return emptyResponse;
@@ -97,8 +94,8 @@ describe("HelloWorld", () => {
                     return Promise.resolve(msg);
                 },
             },
-            teamId,
-        } as HandlerContext;
+            workspaceId,
+        } as any;
 
         const result = await hello.handle(ctx);
         assert(result.code === 0);

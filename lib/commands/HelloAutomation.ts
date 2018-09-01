@@ -46,7 +46,7 @@ export class HelloAutomation implements HandleCommand {
     @Value("environment")
     private readonly environment: string;
 
-    public handle(ctx: HandlerContext): Promise<HandlerResult> {
+    public async handle(ctx: HandlerContext): Promise<HandlerResult> {
         const pkg = `${pj.name}:${pj.version}`;
         const atm = `${this.name}:${this.version}`;
         const name = (pkg === atm) ? pkg : `package ${pkg} automation ${atm}`;
