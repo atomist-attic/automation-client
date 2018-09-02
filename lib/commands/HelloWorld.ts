@@ -24,7 +24,6 @@ import {
     MappedParameter,
     MappedParameters,
     Parameter,
-    Success,
     success,
     Tags,
 } from "@atomist/automation-client";
@@ -49,16 +48,12 @@ export class HelloWorld implements HandleCommand {
     @MappedParameter(MappedParameters.SlackUserName)
     public slackUser: string;
 
-    public handle(ctx: HandlerContext): Promise<HandlerResult> {
+    public async handle(ctx: HandlerContext): Promise<HandlerResult> {
         logger.debug(`incoming parameter was ${this.name}`);
-
-        if (!ctx.graphClient) {
-            return Promise.resolve(Success);
-        }
 
         return ctx.graphClient.query<Person.Query, Person.Variables>({
             name: "Person",
-            variables: { teamId: ctx.teamId, slackUser: this.slackUser },
+            variables: { slackUser: this.slackUser },
         })
             .then(result => {
                 if (result && result.ChatTeam && result.ChatTeam[0] && result.ChatTeam[0].members &&
@@ -66,7 +61,7 @@ export class HelloWorld implements HandleCommand {
 
                     return result.ChatTeam[0].members[0].person;
                 } else {
-                    return null;
+                    return undefined;
                 }
             })
             .then(person => {

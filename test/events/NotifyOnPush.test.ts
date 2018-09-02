@@ -19,6 +19,7 @@ import * as assert from "power-assert";
 import {
     EventFired,
     HandlerContext,
+    SlackDestination,
 } from "@atomist/automation-client";
 
 import { NotifyOnPush } from "../../lib/events/NotifyOnPush";
@@ -35,7 +36,7 @@ describe("NotifyOnPush", () => {
     ];
 
     it("should send a notification to a channel", async () => {
-        const pushEvent = {
+        const pushEvent: EventFired<PushWithRepo.Subscription> = {
             data: {
                 Push: [{
                     after: {
@@ -46,18 +47,21 @@ describe("NotifyOnPush", () => {
                     },
                 }],
             },
-        } as EventFired<PushWithRepo.Subscription>;
+        } as any;
         let responseMessage: string;
         let responseChannels: string[];
-        const ctx = {
+        const ctx: HandlerContext = {
+            graphClient: {
+                query: () => Promise.resolve({ ChatTeam: [{ id: "T79TH" }] }),
+            },
             messageClient: {
-                addressChannels(msg: string, toChannels: string[]): Promise<any> {
+                send(msg: string, dest: SlackDestination): Promise<any> {
                     responseMessage = msg;
-                    responseChannels = toChannels;
+                    responseChannels = dest.channels;
                     return Promise.resolve(msg);
                 },
             },
-        } as HandlerContext;
+        } as any;
 
         const result = await nop.handle(pushEvent, ctx);
         assert(result.code === 0);
@@ -67,7 +71,7 @@ describe("NotifyOnPush", () => {
     });
 
     it("should send a notification to all repo channels", async () => {
-        const pushEvent = {
+        const pushEvent: EventFired<PushWithRepo.Subscription> = {
             data: {
                 Push: [{
                     after: {
@@ -78,18 +82,21 @@ describe("NotifyOnPush", () => {
                     },
                 }],
             },
-        } as EventFired<PushWithRepo.Subscription>;
+        } as any;
         let responseMessage: string;
         let responseChannels: string[];
-        const ctx = {
+        const ctx: HandlerContext = {
+            graphClient: {
+                query: () => Promise.resolve({ ChatTeam: [{ id: "T79TH" }] }),
+            },
             messageClient: {
-                addressChannels(msg: string, toChannels: string[]): Promise<any> {
+                send(msg: string, dest: SlackDestination): Promise<any> {
                     responseMessage = msg;
-                    responseChannels = toChannels;
+                    responseChannels = dest.channels;
                     return Promise.resolve(msg);
                 },
             },
-        } as HandlerContext;
+        } as any;
 
         const result = await nop.handle(pushEvent, ctx);
         assert(result.code === 0);
@@ -98,7 +105,7 @@ describe("NotifyOnPush", () => {
     });
 
     it("should send no notifications if no channels", async () => {
-        const pushEvent = {
+        const pushEvent: EventFired<PushWithRepo.Subscription> = {
             data: {
                 Push: [{
                     after: {
@@ -109,18 +116,21 @@ describe("NotifyOnPush", () => {
                     },
                 }],
             },
-        } as EventFired<PushWithRepo.Subscription>;
+        } as any;
         let responseMessage: string;
         let responseChannels: string[];
-        const ctx = {
+        const ctx: HandlerContext = {
+            graphClient: {
+                query: () => Promise.resolve({ ChatTeam: [{ id: "T79TH" }] }),
+            },
             messageClient: {
-                addressChannels(msg: string, toChannels: string[]): Promise<any> {
+                addressChannels(msg: string, dest: SlackDestination): Promise<any> {
                     responseMessage = msg;
-                    responseChannels = toChannels;
+                    responseChannels = dest.channels;
                     return Promise.resolve(msg);
                 },
             },
-        } as HandlerContext;
+        } as any;
 
         const result = await nop.handle(pushEvent, ctx);
         assert(result.code === 0);

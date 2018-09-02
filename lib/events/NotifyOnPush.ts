@@ -15,6 +15,7 @@
  */
 
 import {
+    addressSlackChannelsFromContext,
     EventFired,
     EventHandler,
     failure,
@@ -34,13 +35,13 @@ import * as graphql from "../typings/types";
 @Tags("push", "notification")
 export class NotifyOnPush implements HandleEvent<graphql.PushWithRepo.Subscription> {
 
-    public handle(e: EventFired<graphql.PushWithRepo.Subscription>, ctx: HandlerContext): Promise<HandlerResult> {
+    public async handle(e: EventFired<graphql.PushWithRepo.Subscription>, ctx: HandlerContext): Promise<HandlerResult> {
         logger.debug(`incoming event is ${JSON.stringify(e.data)}`);
 
-        return Promise.all(e.data.Push.map(p => {
+        return Promise.all(e.data.Push.map(async p => {
             if (p.repo && p.repo.channels && p.repo.channels.length > 0) {
-                return ctx.messageClient.addressChannels(`Got a push with sha \`${p.after.sha}\``,
-                    p.repo.channels.map(c => c.name));
+                const dest = await addressSlackChannelsFromContext(ctx, ...p.repo.channels.map(c => c.name));
+                return ctx.messageClient.send(`Got a push with sha \`${p.after.sha}\``, dest);
             } else {
                 return Success;
             }

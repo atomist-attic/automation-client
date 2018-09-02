@@ -1,5 +1,5 @@
-query Person($teamId: ID!, $slackUser: String!) {
-  ChatTeam(id: $teamId) {
+query Person($slackUser: String!) {
+  ChatTeam {
     members(screenName: $slackUser) {
       person {
         forename
