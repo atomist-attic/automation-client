@@ -7,19 +7,26 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased](https://github.com/atomist/automation-seed-ts/compare/0.12.0...HEAD)
 
+### Changed
+
+-   Replace use of deprecated items. [#6](https://github.com/atomist/automation-seed-ts/issues/6)
+
 ## [0.12.0](https://github.com/atomist/automation-seed-ts/compare/0.11.0...0.12.0) - 2018-08-19
 
 ### Changed
 
 -   Reduced Kubernetes termination grace period.
 -   Update @atomist/automation-client and use its bin scripts in
-    package scripts.
 
 ### Fixed
 
 -   Corrected watch of autostart package script.
 
 ## [0.11.0](https://github.com/atomist/automation-seed-ts/compare/0.10.0...0.11.0) - 2018-08-17
+
+### Added
+
+-   Provide Kubernetes deployment patch suitable for use by k8-automation.
 
 ### Changed
 
@@ -30,13 +37,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 -   Use automation-client scripts in package scripts.
 -   Relocate Kubernetes assets.
 
-### Added
-
--   Provide Kubernetes deployment patch suitable for use by k8-automation.
-
 ## [0.10.0](https://github.com/atomist/automation-seed-ts/compare/0.9.0...0.10.0) - 2018-04-13
-
-GraphQL release
 
 ### Changed
 
@@ -44,15 +45,11 @@ GraphQL release
 
 ## [0.9.0](https://github.com/atomist/automation-seed-ts/compare/0.8.0...0.9.0) - 2018-04-10
 
-Hello release
-
 ### Added
 
 -   HelloAutomation command handler
 
 ## [0.8.0](https://github.com/atomist/automation-seed-ts/compare/0.7.0...0.8.0) - 2018-03-19
-
-Configuration release
 
 ### Changed
 
@@ -67,8 +64,6 @@ Configuration release
 
 ## [0.7.0](https://github.com/atomist/automation-seed-ts/compare/0.6.0...0.7.0) - 2018-02-06
 
-Kubernetes release
-
 ### Added
 
 -   Kubernetes deployment specification and instructions
@@ -78,8 +73,6 @@ Kubernetes release
 -   Docker CMD
 
 ## [0.6.0](https://github.com/atomist/automation-seed-ts/compare/0.5.0...0.6.0) - 2018-02-05
-
-Docker release
 
 ### Added
 
@@ -95,34 +88,25 @@ Docker release
 
 ## [0.5.0](https://github.com/atomist/automation-seed-ts/compare/0.4.0...0.5.0) - 2018-01-31
 
-Autostart release
+### Added
+
+-   Travis CI build script can link Docker images to commits in
+-   Travis CI build script can publish to S3 buckets
 
 ### Changed
 
 -   Travis CI build script sets local git config
 -   Change autostart package script to avoid zombie processes
 -   Travis CI build script does not npm publish by default, set
-    NPM_PUBLISH environment variable to enable it
-
-### Added
-
--   Travis CI build script can link Docker images to commits in
-    Atomist
--   Travis CI build script can publish to S3 buckets
 
 ## [0.4.0](https://github.com/atomist/automation-seed-ts/compare/0.3.0...0.4.0) - 2018-01-17
-
-Build release
 
 ### Changed
 
 -   Improve Docker handling in Travis CI build script
 -   Update package scripts to use `atomist gql-gen` to generate
-    TypeScript from GraphQL
 
 ## [0.3.0](https://github.com/atomist/automation-seed-ts/compare/0.2.0...0.3.0) - 2018-01-08
-
-Portable release
 
 ### Changed
 
@@ -133,8 +117,6 @@ Portable release
 
 ## [0.2.0](https://github.com/atomist/automation-seed-ts/compare/0.1.0...0.2.0) - 2017-11-22
 
-Update release
-
 ### Changed
 
 -   Updated to @atomist/automation-client@0.2.0
@@ -144,8 +126,6 @@ Update release
 -   Updated to @atomist/automation-client 0.3.4
 
 ## [0.1.0](https://github.com/atomist/automation-seed-ts/tree/0.1.0) - 2017-10-12
-
-Initial release
 
 ### Added
 
