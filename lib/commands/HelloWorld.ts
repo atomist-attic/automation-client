@@ -24,7 +24,7 @@ import {
     MappedParameter,
     MappedParameters,
     Parameter,
-    success,
+    Success,
     Tags,
 } from "@atomist/automation-client";
 
@@ -51,26 +51,23 @@ export class HelloWorld implements HandleCommand {
     public async handle(ctx: HandlerContext): Promise<HandlerResult> {
         logger.debug(`incoming parameter was ${this.name}`);
 
-        return ctx.graphClient.query<Person.Query, Person.Variables>({
-            name: "Person",
-            variables: { slackUser: this.slackUser },
-        })
-            .then(result => {
-                if (result && result.ChatTeam && result.ChatTeam[0] && result.ChatTeam[0].members &&
-                    result.ChatTeam[0].members[0] && result.ChatTeam[0].members[0].person) {
+        try {
+            const result = await ctx.graphClient.query<Person.Query, Person.Variables>({
+                name: "Person",
+                variables: { slackUser: this.slackUser },
+            });
 
-                    return result.ChatTeam[0].members[0].person;
-                } else {
-                    return undefined;
-                }
-            })
-            .then(person => {
-                if (person) {
-                    return ctx.messageClient.respond(`Hello ${this.name} from ${person.forename} ${person.surname}`);
-                } else {
-                    return ctx.messageClient.respond(`Hello ${this.name}`);
-                }
-            })
-            .then(success, failure);
+            if (result && result.ChatTeam && result.ChatTeam[0] && result.ChatTeam[0].members &&
+                result.ChatTeam[0].members[0] && result.ChatTeam[0].members[0].person) {
+
+                const person = result.ChatTeam[0].members[0].person;
+                await ctx.messageClient.respond(`Hello ${this.name} from ${person.forename} ${person.surname}`);
+            } else {
+                await ctx.messageClient.respond(`Hello ${this.name}`);
+            }
+        } catch (e) {
+            return failure(e);
+        }
+        return Success;
     }
 }

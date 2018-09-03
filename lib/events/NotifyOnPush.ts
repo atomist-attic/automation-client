@@ -24,8 +24,8 @@ import {
     HandlerContext,
     HandlerResult,
     logger,
+    reduceResults,
     Success,
-    success,
     Tags,
 } from "@atomist/automation-client";
 
@@ -38,14 +38,17 @@ export class NotifyOnPush implements HandleEvent<graphql.PushWithRepo.Subscripti
     public async handle(e: EventFired<graphql.PushWithRepo.Subscription>, ctx: HandlerContext): Promise<HandlerResult> {
         logger.debug(`incoming event is ${JSON.stringify(e.data)}`);
 
-        return Promise.all(e.data.Push.map(async p => {
-            if (p.repo && p.repo.channels && p.repo.channels.length > 0) {
-                const dest = await addressSlackChannelsFromContext(ctx, ...p.repo.channels.map(c => c.name));
-                return ctx.messageClient.send(`Got a push with sha \`${p.after.sha}\``, dest);
-            } else {
+        try {
+            const results = await Promise.all(e.data.Push.map(async p => {
+                if (p.repo && p.repo.channels && p.repo.channels.length > 0) {
+                    const dest = await addressSlackChannelsFromContext(ctx, ...p.repo.channels.map(c => c.name));
+                    await ctx.messageClient.send(`Got a push with sha \`${p.after.sha}\``, dest);
+                }
                 return Success;
-            }
-        }))
-            .then(success, failure);
+            }));
+            return reduceResults(results);
+        } catch (e) {
+            return failure(e);
+        }
     }
 }

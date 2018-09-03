@@ -7,9 +7,11 @@
 .npm*
 .travis.yml
 .atomist/
+.nyc_output/
 assets/kubectl/
 node_modules/
 build/
+coverage/
 doc/
 log/
 scripts/
