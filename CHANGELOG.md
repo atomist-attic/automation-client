@@ -7,9 +7,22 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased](https://github.com/atomist/automation-seed-ts/compare/0.12.0...HEAD)
 
+### Added
+
+-   Add test coverage using [istanbul](https://github.com/istanbuljs/nyc) for [TypeScript](https://istanbul.js.org/docs/tutorials/typescript/)
+-   Add TSLint rules that reduce coding errors.
+
 ### Changed
 
 -   Replace use of deprecated items. [#6](https://github.com/atomist/automation-seed-ts/issues/6)
+-   Improve [TypeScript input file selection](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html).
+-   Improve [TypeScript compiler options](https://www.typescriptlang.org/docs/handbook/compiler-options.html)
+-   Set TypeScript compiler target to ES2016.
+
+### Removed
+
+-   Remove HelloAutomation.
+-   Remove TypeScript `rootDir` compiler option, it is only useful with `outDir`.
 
 ## [0.12.0](https://github.com/atomist/automation-seed-ts/compare/0.11.0...0.12.0) - 2018-08-19
 
