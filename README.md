@@ -1,3 +1,7 @@
+# DEPRECATED
+
+See [atomist-seeds/automation-client](https://github.com/atomist-seeds/automation-client).
+
 # @atomist/automation-seed
 
 [![npm version](https://img.shields.io/npm/v/@atomist/automation-seed.svg)](https://www.npmjs.com/package/@atomist/automation-seed)
