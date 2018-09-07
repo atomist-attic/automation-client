@@ -1,5 +1,5 @@
 {
-  "name": "@atomist/automation-seed",
+  "name": "@atomist-seeds/automation-client",
   "version": "0.12.1",
   "description": "Atomist automation client seed project",
   "author": {
@@ -8,13 +8,13 @@
     "url": "https://atomist.com/"
   },
   "license": "Apache-2.0",
-  "homepage": "https://github.com/atomist/automation-seed-ts#readme",
+  "homepage": "https://github.com/atomist-seeds/automation-client#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/atomist/automation-seed-ts.git"
+    "url": "https://github.com/atomist-seeds/automation-client.git"
   },
   "bugs": {
-    "url": "https://github.com/atomist/automation-seed-ts/issues"
+    "url": "https://github.com/atomist-seeds/automation-client/issues"
   },
   "keywords": [
     "atomist",
@@ -24,7 +24,7 @@
   "main": "./index.js",
   "types": "./index.d.ts",
   "dependencies": {
-    "@atomist/automation-client": "^1.0.0-master.20180901185845"
+    "@atomist/automation-client": "^1.0.0-M.3"
   },
   "devDependencies": {
     "@types/mocha": "^5.2.5",
