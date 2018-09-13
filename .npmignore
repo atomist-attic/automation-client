@@ -3,8 +3,8 @@
 .vscode/
 *~
 .#*
-.git*
 .dockerignore
+.git*
 .npmrc*
 .travis.yml
 .atomist/
