@@ -1,6 +1,6 @@
 {
   "name": "@atomist-seeds/automation-client",
-  "version": "0.12.1",
+  "version": "1.0.0",
   "description": "Atomist automation client seed project",
   "author": {
     "name": "Atomist",
