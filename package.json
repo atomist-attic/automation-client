@@ -24,7 +24,7 @@
   "main": "./index.js",
   "types": "./index.d.ts",
   "dependencies": {
-    "@atomist/automation-client": "1.0.0-master.20180914123233"
+    "@atomist/automation-client": "1.0.0-M.4"
   },
   "devDependencies": {
     "@types/mocha": "^5.2.5",
