@@ -21,10 +21,11 @@ Atomist API for software.
 
 ## Prerequisites
 
-Before you can run this project, you will need an Atomist workspace.
-See the [Atomist Getting Started Guide][atomist-start] for
-instructions on how to get an Atomist workspace and connect it to your
-source code repositories, continuous integration, chat platform, etc.
+Before you can run this project, you will need an Atomist workspace
+linked to a Slack workspace.  See the [Atomist Getting Started
+Guide][atomist-start] for instructions on how to get an Atomist
+workspace and connect it to your source code repositories, continuous
+integration, chat platform, etc.
 
 You will also need several other prerequisites to successfully run
 this project.  See the [Atomist Developer Guide][atomist-dev] for
@@ -39,18 +40,11 @@ CLI][atomist-cli] installed and properly configured on your system.
 
 ## Running
 
-Once the prerequisites are met on your system, use `npm` to install
-dependencies and build the project.
+Once the prerequisites are met on your system, you can use the Atomist
+CLI to install dependencies, build the project, and start the client.
 
 ```
-$ npm install
-$ npm run build
-```
-
-You can start up your SDM in the usual `npm` way.
-
-```
-$ npm start
+$ atomist start
 ```
 
 The [Atomist API Client documentation][atomist-client] has more
@@ -101,21 +95,10 @@ will notice when someone pushes new commits to a repository in the
 GitHub organization and send a notice of that push to all Slack
 channels associated with that repository.
 
-If you have followed the instructions above and are running these
-automations against the atomist-playground Slack team and GitHub
-organization, go ahead and edit the [notify-on-push][nop-repo]
-repository by adding some text to its [README][nop-readme].  Once you
-have saved your changes, you should see that event appear in the
-console logs of your locally running automation client, followed by a
-log of the actions the event handler is taking.  Once those actions
-are complete, you should see a new message in the
-[`#notify-on-push`][nop-channel] channel in the atomist-playground
-Slack team.
-
-[nop-handler]: https://github.com/atomist/automation-seed-ts/blob/master/src/events/NotifyOnPush.ts (Atomist NotifyOnPush Event Handler)
-[nop-repo]: https://github.com/atomist-playground/notify-on-push (Atomist NotifyOnPush Repository)
-[nop-readme]: https://github.com/atomist-playground/notify-on-push/edit/master/README.md (Edit NotifyOnPush README)
-[nop-channel]: https://atomist-playground.slack.com/messages/C7GNF6743/ (NotifyOnPush Slack Channel)
+To see this handler in action, you must first link a GitHub repository
+to a Slack channel.  You can do this by inviting the Atomist bot to
+the channel you want to link, sending it the message "repo", i.e.,
+`@atomist repo`, and answering its questions.
 
 ## Support
 
